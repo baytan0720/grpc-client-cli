@@ -13,7 +13,7 @@ import (
 )
 
 const (
-	appVersion = "1.21.1"
+	appVersion = "1.21.2"
 )
 
 func main() {
@@ -159,6 +159,13 @@ func main() {
 				`"auto" option will try to determine the version automatically, it requires correctly functioning grpc server that returns Unimplemented error in case v1 or v1alpha are not supported. ` +
 				"After v1 release the default option will be changed.",
 		},
+		&cli.IntFlag{
+			Name:  "fuzzing",
+			Value: 0,
+			Usage: "Sends random data to the server, useful for fuzzing and testing server's behavior under unexpected input. " +
+				"Accepts a number and specifies the number of requests. If it is less than 0, it will continue to be sent. " +
+				"You can still type certain parameters to avoid being random.",
+		},
 	}
 
 	app.Action = baseCmd
@@ -235,6 +242,11 @@ func runApp(c *cli.Context, opts *startOpts) (e error) {
 	opts.MaxRecvMsgSize = c.Int("max-receive-message-size")
 	opts.OutJsonNames = c.Bool("out-json-names")
 	opts.GrpcReflectVersion = parseReflectVersion(c.Generic("reflect-version"))
+	opts.Fuzzing = c.Int("fuzzing")
+
+	if opts.Fuzzing != 0 && opts.InFormat != caller.JSON {
+		return errors.New("non-JSON format does not supported fuzzing")
+	}
 
 	input := c.String("input")
 

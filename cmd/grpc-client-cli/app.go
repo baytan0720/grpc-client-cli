@@ -44,6 +44,7 @@ type startOpts struct {
 	OutFormat          caller.MsgFormat
 	OutJsonNames       bool
 	GrpcReflectVersion caller.GrpcReflectVersion
+	Fuzzing            int
 
 	// connection credentials
 	TLS      bool
@@ -224,32 +225,42 @@ func (a *app) callService(method *desc.MethodDescriptor, message []byte) error {
 			return err
 		}
 
-		callTimeout := time.Duration(a.opts.Deadline) * time.Second
-		ctx, cancel := context.WithTimeout(rpc.WithStatsCtx(context.Background()), callTimeout)
-		if method.IsServerStreaming() {
-			err = a.callStream(ctx, method, messages)
-		} else {
-			err = a.callClientStream(ctx, method, messages)
-		}
-
-		if err != nil {
-			if !caller.IsErrTransient(err) {
-				cancel()
-				return err
+		f := func(messages [][]byte) (bool, error) {
+			callTimeout := time.Duration(a.opts.Deadline) * time.Second
+			ctx, cancel := context.WithTimeout(rpc.WithStatsCtx(context.Background()), callTimeout)
+			defer cancel()
+			if method.IsServerStreaming() {
+				err = a.callStream(ctx, method, messages)
+			} else {
+				err = a.callClientStream(ctx, method, messages)
 			}
-			fmt.Printf("Error: %s\n", err)
+
+			if err != nil {
+				if !caller.IsErrTransient(err) {
+					return false, err
+				}
+				fmt.Printf("Error: %s\n", err)
+			}
+
+			if a.opts.Verbose {
+				printVerbose(a.w, rpc.ExtractRpcStats(ctx), errors.Unwrap(err))
+			}
+
+			// if we pass a single message, return
+			if len(message) > 0 {
+				return false, nil
+			}
+
+			return true, nil
 		}
 
-		if a.opts.Verbose {
-			printVerbose(a.w, rpc.ExtractRpcStats(ctx), errors.Unwrap(err))
+		if a.opts.Fuzzing != 0 {
+			f = fuzzCallFunc(method, a.opts.Fuzzing, f)
 		}
 
-		// if we pass a single message, return
-		if len(message) > 0 {
-			cancel()
-			return nil
+		if goOn, err := f(messages); !goOn {
+			return err
 		}
-		cancel()
 	}
 }
 
