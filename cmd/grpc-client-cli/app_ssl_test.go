@@ -4,8 +4,8 @@ import (
 	"bytes"
 	"testing"
 
+	app_testing "github.com/baytan0720/grpc-client-cli/internal/testing"
 	"github.com/stretchr/testify/assert"
-	app_testing "github.com/vadimi/grpc-client-cli/internal/testing"
 )
 
 func TestAppServiceTLSInvalidCerts(t *testing.T) {

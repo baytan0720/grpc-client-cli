@@ -4,9 +4,9 @@ import (
 	"context"
 	"time"
 
+	"github.com/baytan0720/grpc-client-cli/internal/rpc"
 	"github.com/jhump/protoreflect/desc"
 	"github.com/jhump/protoreflect/grpcreflect"
-	"github.com/vadimi/grpc-client-cli/internal/rpc"
 	"google.golang.org/grpc"
 	rpb "google.golang.org/grpc/reflection/grpc_reflection_v1alpha"
 )

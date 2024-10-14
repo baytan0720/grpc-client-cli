@@ -7,7 +7,7 @@ import (
 	"io"
 	"strings"
 
-	"github.com/vadimi/grpc-client-cli/internal/rpc"
+	"github.com/baytan0720/grpc-client-cli/internal/rpc"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/connectivity"

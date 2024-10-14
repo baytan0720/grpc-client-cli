@@ -13,7 +13,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/vadimi/grpc-client-cli/internal/testing/grpc_testing"
+	"github.com/baytan0720/grpc-client-cli/internal/testing/grpc_testing"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/credentials"

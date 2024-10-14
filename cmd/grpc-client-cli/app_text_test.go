@@ -4,8 +4,8 @@ import (
 	"bytes"
 	"testing"
 
-	"github.com/vadimi/grpc-client-cli/internal/caller"
-	app_testing "github.com/vadimi/grpc-client-cli/internal/testing"
+	"github.com/baytan0720/grpc-client-cli/internal/caller"
+	app_testing "github.com/baytan0720/grpc-client-cli/internal/testing"
 )
 
 func TestAppServiceCallsProtoText(t *testing.T) {

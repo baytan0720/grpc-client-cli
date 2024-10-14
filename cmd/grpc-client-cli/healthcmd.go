@@ -7,9 +7,9 @@ import (
 	"io"
 	"os"
 
+	"github.com/baytan0720/grpc-client-cli/internal/cliext"
+	"github.com/baytan0720/grpc-client-cli/internal/rpc"
 	"github.com/urfave/cli/v2"
-	"github.com/vadimi/grpc-client-cli/internal/cliext"
-	"github.com/vadimi/grpc-client-cli/internal/rpc"
 	"google.golang.org/grpc/health/grpc_health_v1"
 	"google.golang.org/protobuf/encoding/protojson"
 )

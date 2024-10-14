@@ -3,7 +3,7 @@ package main
 import (
 	"testing"
 
-	app_testing "github.com/vadimi/grpc-client-cli/internal/testing"
+	app_testing "github.com/baytan0720/grpc-client-cli/internal/testing"
 )
 
 func TestAppServiceCallsNoReflect(t *testing.T) {

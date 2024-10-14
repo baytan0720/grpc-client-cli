@@ -6,10 +6,10 @@ import (
 	"os"
 
 	"github.com/AlecAivazis/survey/v2/terminal"
+	"github.com/baytan0720/grpc-client-cli/internal/caller"
+	"github.com/baytan0720/grpc-client-cli/internal/cliext"
+	"github.com/baytan0720/grpc-client-cli/internal/fs"
 	"github.com/urfave/cli/v2"
-	"github.com/vadimi/grpc-client-cli/internal/caller"
-	"github.com/vadimi/grpc-client-cli/internal/cliext"
-	"github.com/vadimi/grpc-client-cli/internal/fs"
 )
 
 const (

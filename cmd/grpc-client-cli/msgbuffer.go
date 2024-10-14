@@ -9,9 +9,9 @@ import (
 	"os"
 	"slices"
 
+	"github.com/baytan0720/grpc-client-cli/internal/caller"
 	"github.com/jhump/protoreflect/desc"
 	"github.com/jhump/protoreflect/desc/protoprint"
-	"github.com/vadimi/grpc-client-cli/internal/caller"
 	"google.golang.org/protobuf/encoding/protojson"
 	"google.golang.org/protobuf/encoding/prototext"
 	"google.golang.org/protobuf/reflect/protoreflect"

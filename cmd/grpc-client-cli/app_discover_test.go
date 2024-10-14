@@ -5,9 +5,9 @@ import (
 	"strings"
 	"testing"
 
+	app_testing "github.com/baytan0720/grpc-client-cli/internal/testing"
 	"github.com/jhump/protoreflect/grpcreflect"
 	"github.com/stretchr/testify/require"
-	app_testing "github.com/vadimi/grpc-client-cli/internal/testing"
 )
 
 func TestDiscoverCommand(t *testing.T) {

@@ -13,10 +13,10 @@ import (
 	"time"
 
 	"github.com/AlecAivazis/survey/v2"
+	"github.com/baytan0720/grpc-client-cli/internal/caller"
+	"github.com/baytan0720/grpc-client-cli/internal/rpc"
 	"github.com/jhump/protoreflect/desc"
 	"github.com/jhump/protoreflect/desc/protoprint"
-	"github.com/vadimi/grpc-client-cli/internal/caller"
-	"github.com/vadimi/grpc-client-cli/internal/rpc"
 	"google.golang.org/grpc"
 )
 

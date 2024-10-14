@@ -5,11 +5,11 @@ import (
 	"strings"
 	"testing"
 
+	"github.com/baytan0720/grpc-client-cli/internal/testing/grpc_testing"
 	"github.com/jhump/protoreflect/desc"
 	"github.com/jhump/protoreflect/desc/builder"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
-	"github.com/vadimi/grpc-client-cli/internal/testing/grpc_testing"
 	"google.golang.org/protobuf/reflect/protoreflect"
 	"google.golang.org/protobuf/types/dynamicpb"
 	"google.golang.org/protobuf/types/known/anypb"

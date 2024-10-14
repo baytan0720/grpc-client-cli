@@ -6,10 +6,10 @@ import (
 	"flag"
 	"testing"
 
+	app_testing "github.com/baytan0720/grpc-client-cli/internal/testing"
 	"github.com/spyzhov/ajson"
 	"github.com/stretchr/testify/require"
 	"github.com/urfave/cli/v2"
-	app_testing "github.com/vadimi/grpc-client-cli/internal/testing"
 )
 
 func TestHealthCheck(t *testing.T) {

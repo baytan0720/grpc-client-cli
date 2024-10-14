@@ -5,9 +5,9 @@ import (
 	"reflect"
 	"testing"
 
+	"github.com/baytan0720/grpc-client-cli/internal/caller"
 	"github.com/jhump/protoreflect/desc"
 	"github.com/spyzhov/ajson"
-	"github.com/vadimi/grpc-client-cli/internal/caller"
 	"google.golang.org/grpc/interop/grpc_testing"
 )
 
